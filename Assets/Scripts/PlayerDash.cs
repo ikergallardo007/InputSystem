@@ -29,19 +29,21 @@ public class PlayerDash : MonoBehaviour
         // "W" key
         if (Input.GetKeyDown(KeyCode.W))
         {
+            // Look if "W" has been tapped before.
             if (tapW)
             {
+                // Look if the time between two taps is smaller than the defined time, in milliseconds.
                 if (DateTime.Now.Subtract(wTime).TotalMilliseconds < doubleTapTime)
                 {
-                    cubeTransform.Translate(cubeTransform.forward);
-                    tapW = false;
+                    cubeTransform.Translate(cubeTransform.forward); // Translate the cube in the direction.
+                    tapW = false; // Restart as "W" has not been pressed before.
                 }
-                else
+                else // If the player last more time for the second press restart the time.
                 {
                     wTime = DateTime.Now;
                 }
             } 
-            else
+            else // If it is the first tap, collect the tap of "W", remove other keys and save the time.
             {
                 wTime = DateTime.Now;
                 tapW = true;
@@ -54,20 +56,21 @@ public class PlayerDash : MonoBehaviour
         // "S" key
         if (Input.GetKeyDown(KeyCode.S))
         {
-
+            // Look if "S" has been tapped before.
             if (tapS)
             {
+                // Look if the time between two taps is smaller than the defined time, in milliseconds.
                 if (DateTime.Now.Subtract(sTime).TotalMilliseconds < doubleTapTime)
                 {
-                    cubeTransform.Translate(cubeTransform.forward * (-1));
-                    tapS = false;
+                    cubeTransform.Translate(cubeTransform.forward * (-1)); // Translate the cube in the direction.
+                    tapS = false; // Restart as "S" has not been pressed before.
                 }
-                else
+                else // If the player last more time for the second press restart the time.
                 {
                     sTime = DateTime.Now;
                 }
             }
-            else
+            else // If it is the first tap, collect the tap of "W", remove other keys and save the time.
             {
                 sTime = DateTime.Now;
                 tapS = true;
@@ -80,19 +83,21 @@ public class PlayerDash : MonoBehaviour
         // "D" key
         if (Input.GetKeyDown(KeyCode.D))
         {
+            // Look if "D" has been tapped before.
             if (tapD)
             {
+                // Look if the time between two taps is smaller than the defined time, in milliseconds.
                 if (DateTime.Now.Subtract(dTime).TotalMilliseconds < doubleTapTime)
                 {
-                    cubeTransform.Translate(cubeTransform.right);
-                    tapD = false;
+                    cubeTransform.Translate(cubeTransform.right); // Translate the cube in the direction.
+                    tapD = false; // Restart as "D" has not been pressed before.
                 }
-                else
+                else // If the player last more time for the second press restart the time.
                 {
                     dTime = DateTime.Now;
                 }
             }
-            else
+            else // If it is the first tap, collect the tap of "W", remove other keys and save the time.
             {
                 dTime = DateTime.Now;
                 tapD = true;
@@ -105,19 +110,21 @@ public class PlayerDash : MonoBehaviour
         // "A" key
         if (Input.GetKeyDown(KeyCode.A))
         {
+            // Look if "A" has been tapped before.
             if (tapA)
             {
+                // Look if the time between two taps is smaller than the defined time, in milliseconds.
                 if (DateTime.Now.Subtract(aTime).TotalMilliseconds < doubleTapTime)
                 {
-                    cubeTransform.Translate(cubeTransform.right * (-1));
-                    tapA = false;
+                    cubeTransform.Translate(cubeTransform.right * (-1)); // Translate the cube in the direction.
+                    tapA = false; // Restart as "A" has not been pressed before.
                 }
-                else
+                else // If the player last more time for the second press restart the time.
                 {
                     aTime = DateTime.Now;
                 }
             }
-            else
+            else // If it is the first tap, collect the tap of "W", remove other keys and save the time.
             {
                 aTime = DateTime.Now;
                 tapA = true;
