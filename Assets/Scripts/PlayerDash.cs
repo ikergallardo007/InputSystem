@@ -12,10 +12,10 @@ public class PlayerDash : MonoBehaviour
     private DateTime sTime; // Time that "S" was pressed.
     private DateTime dTime; // Time that "D" was pressed.
     private DateTime aTime; // Time that "A" was pressed.
-    private bool tapW = true; // Waiting for first "W" tap.
-    private bool tapS = true; // Waiting for first "S" tap.
-    private bool tapD = true; // Waiting for first "D" tap.
-    private bool tapA = true; // Waiting for first "A" tap.
+    private bool tapW = false; // "W" key pressed.
+    private bool tapS = false; // "S" key pressed.
+    private bool tapD = false; // "D" key pressed.
+    private bool tapA = false; // "A" key pressed.
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,21 +29,25 @@ public class PlayerDash : MonoBehaviour
         // "W" key
         if (Input.GetKeyDown(KeyCode.W))
         {
-
             if (tapW)
             {
-                // "W" is pressed, so other keys has to be initialised, in case some of them was pressed before.
-                wTime = DateTime.Now; // Obtain the time that "W" is tapped.
-                tapW = false;
-                tapS = true; 
-                tapD = true;
-                tapA = true;
-            }
-            else if (((DateTime.Now.Second * 1000 + DateTime.Now.Millisecond) - (wTime.Second * 1000 + wTime.Millisecond)) < doubleTapTime) // Calculation of the time in millisecond between two taps.
+                if (DateTime.Now.Subtract(wTime).TotalMilliseconds < doubleTapTime)
+                {
+                    cubeTransform.Translate(cubeTransform.forward);
+                    tapW = false;
+                }
+                else
+                {
+                    wTime = DateTime.Now;
+                }
+            } 
+            else
             {
-                print("Se ha pulsado W dos veces seguidas");
-                cubeTransform.Translate(Vector3.forward); // Translation of the Player in the appropriate direction
+                wTime = DateTime.Now;
                 tapW = true;
+                tapS = false;
+                tapD = false;
+                tapA = false;
             }
         }
 
@@ -53,18 +57,23 @@ public class PlayerDash : MonoBehaviour
 
             if (tapS)
             {
-                // "S" is pressed, so other keys has to be initialised, in case some of them was pressed before.
-                sTime = DateTime.Now; // Obtain the time that "S" is tapped.
-                tapS = false;
-                tapW = true;
-                tapD = true;
-                tapA = true;
+                if (DateTime.Now.Subtract(sTime).TotalMilliseconds < doubleTapTime)
+                {
+                    cubeTransform.Translate(cubeTransform.forward * (-1));
+                    tapS = false;
+                }
+                else
+                {
+                    sTime = DateTime.Now;
+                }
             }
-            else if (((DateTime.Now.Second * 1000 + DateTime.Now.Millisecond) - (sTime.Second * 1000 + sTime.Millisecond)) < doubleTapTime) // Calculation of the time in millisecond between two taps.
+            else
             {
-                print("Se ha pulsado S dos veces seguidas");
-                cubeTransform.Translate(Vector3.forward * (-1)); // Translation of the Player in the appropriate direction
+                sTime = DateTime.Now;
                 tapS = true;
+                tapW = false;
+                tapD = false;
+                tapA = false;
             }
         }
 
@@ -73,39 +82,48 @@ public class PlayerDash : MonoBehaviour
         {
             if (tapD)
             {
-                // "D" is pressed, so other keys has to be initialised, in case some of them was pressed before.
-                dTime = DateTime.Now; // Obtain the time that "D" is tapped.
-                tapD = false;
-                tapW = true;
-                tapS = true;
-                tapA = true;
+                if (DateTime.Now.Subtract(dTime).TotalMilliseconds < doubleTapTime)
+                {
+                    cubeTransform.Translate(cubeTransform.right);
+                    tapD = false;
+                }
+                else
+                {
+                    dTime = DateTime.Now;
+                }
             }
-            else if (((DateTime.Now.Second * 1000 + DateTime.Now.Millisecond) - (dTime.Second * 1000 + dTime.Millisecond)) < doubleTapTime) // Calculation of the time in millisecond between two taps.
+            else
             {
-                print("Se ha pulsado D dos veces seguidas");
-                cubeTransform.Translate(Vector3.right); // Translation of the Player in the appropriate direction
+                dTime = DateTime.Now;
                 tapD = true;
+                tapS = false;
+                tapW = false;
+                tapA = false;
             }
         }
 
         // "A" key
         if (Input.GetKeyDown(KeyCode.A))
         {
-
             if (tapA)
             {
-                // "A" is pressed, so other keys has to be initialised, in case some of them was pressed before.
-                aTime = DateTime.Now; // Obtain the time that "A" is tapped.
-                tapA = false;
-                tapW = true;
-                tapS = true;
-                tapD = true;
+                if (DateTime.Now.Subtract(aTime).TotalMilliseconds < doubleTapTime)
+                {
+                    cubeTransform.Translate(cubeTransform.right * (-1));
+                    tapA = false;
+                }
+                else
+                {
+                    aTime = DateTime.Now;
+                }
             }
-            else if (((DateTime.Now.Second * 1000 + DateTime.Now.Millisecond) - (aTime.Second * 1000 + aTime.Millisecond)) < doubleTapTime) // Calculation of the time in millisecond between two taps.
+            else
             {
-                print("Se ha pulsado A dos veces seguidas");
-                cubeTransform.Translate(Vector3.right * (-1)); // Translation of the Player in the appropriate direction
+                aTime = DateTime.Now;
                 tapA = true;
+                tapS = false;
+                tapD = false;
+                tapW = false;
             }
         }
     }
