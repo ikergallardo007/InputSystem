@@ -5,6 +5,7 @@ public class PlayerDash : MonoBehaviour
 {
     // Public Properties
     public Transform cubeTransform; // Player
+    public Transform cameraTransform; // Camera
     public float doubleTapTime = 300f; // Time in milliseconds to consider double tap.
 
     // Private Attributes
@@ -36,6 +37,7 @@ public class PlayerDash : MonoBehaviour
                 if (DateTime.Now.Subtract(wTime).TotalMilliseconds < doubleTapTime)
                 {
                     cubeTransform.Translate(cubeTransform.forward); // Translate the cube in the direction.
+                    cameraTransform.Translate(cubeTransform.forward); // Translate the camera in the direction.
                     tapW = false; // Restart as "W" has not been pressed before.
                 }
                 else // If the player last more time for the second press restart the time.
@@ -63,6 +65,7 @@ public class PlayerDash : MonoBehaviour
                 if (DateTime.Now.Subtract(sTime).TotalMilliseconds < doubleTapTime)
                 {
                     cubeTransform.Translate(cubeTransform.forward * (-1)); // Translate the cube in the direction.
+                    cameraTransform.Translate(cubeTransform.forward * (-1)); // Translate the camera in the direction.
                     tapS = false; // Restart as "S" has not been pressed before.
                 }
                 else // If the player last more time for the second press restart the time.
@@ -90,6 +93,7 @@ public class PlayerDash : MonoBehaviour
                 if (DateTime.Now.Subtract(dTime).TotalMilliseconds < doubleTapTime)
                 {
                     cubeTransform.Translate(cubeTransform.right); // Translate the cube in the direction.
+                    cameraTransform.Translate(cubeTransform.right); // Translate the camera in the direction.
                     tapD = false; // Restart as "D" has not been pressed before.
                 }
                 else // If the player last more time for the second press restart the time.
@@ -117,6 +121,7 @@ public class PlayerDash : MonoBehaviour
                 if (DateTime.Now.Subtract(aTime).TotalMilliseconds < doubleTapTime)
                 {
                     cubeTransform.Translate(cubeTransform.right * (-1)); // Translate the cube in the direction.
+                    cameraTransform.Translate(cubeTransform.right * (-1)); // Translate the camera in the direction.
                     tapA = false; // Restart as "A" has not been pressed before.
                 }
                 else // If the player last more time for the second press restart the time.

@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   cubeTransform: {fileID: 1310260948}
+  cameraTransform: {fileID: 267718069}
   speed: 3
 --- !u!4 &2051930064
 Transform:
@@ -555,6 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDash
   cubeTransform: {fileID: 1310260948}
+  cameraTransform: {fileID: 267718069}
   doubleTapTime: 300
 --- !u!114 &2051930066
 MonoBehaviour:
