@@ -571,12 +571,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLookAndMove
   cubeTransform: {fileID: 1310260948}
-  cameraTransform: {fileID: 267718069}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 267718069}
   - {fileID: 1123950667}
   - {fileID: 1310260948}
   - {fileID: 2051930064}
+  - {fileID: 267718069}
